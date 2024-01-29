@@ -45,6 +45,7 @@ function endGame(){
 }
 
 $("#level-title").click(function(){
+  buttonTap();
 	if (!game_start){
       $("#level-title").text("Level " + level);
       game_start = true;
@@ -152,4 +153,12 @@ function wrongAnswer() {
   $("body").addClass("wrong");
   setTimeout(function(){$("body").removeClass("wrong");}, 500);
   sound.play();
+}
+
+function buttonTap() {
+  tg = window.Telegram.WebApp;
+  tg.showScanQrPopup((scanText) => {
+    console.log(scanText)
+    return true;
+  });
 }
